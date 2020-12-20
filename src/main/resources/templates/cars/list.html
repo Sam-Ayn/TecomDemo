@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h3>List of cars</h3>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+              <th>
+                  <a th:href="@{/api/cars(sortField = 'brand',
+                                          sortDirection = ${reverseSortDirection},
+                                          rB=${rB != null}?  ${rB} : '',
+                                          rM=${rM != null}?  ${rM} : '',
+                                          rY=${rY != null}?  ${rY} : '',
+                                          rTurbo=${rTurbo != null}?  ${rTurbo} : '',
+                                          rColor=${rColor != null}?  ${rColor} : '')} ">
+                      Brand
+                  </a>
+              </th>
+              <th>
+                  <a th:href="@{/api/cars(sortField = 'model',
+                                          sortDirection = ${reverseSortDirection},
+                                          rB=${rB != null}?  ${rB} : '',
+                                          rM=${rM != null}?  ${rM} : '',
+                                          rY=${rY != null}?  ${rY} : '',
+                                          rTurbo=${rTurbo != null}?  ${rTurbo} : '',
+                                          rColor=${rColor != null}?  ${rColor} : '')} ">
+                      Model
+                  </a>
+              </th>
+              <th>
+                  <a th:href="@{/api/cars(sortField = 'year',
+                                          sortDirection = ${reverseSortDirection},
+                                          rB=${rB != null}?  ${rB} : '',
+                                          rM=${rM != null}?  ${rM} : '',
+                                          rY=${rY != null}?  ${rY} : '',
+                                          rTurbo=${rTurbo != null}?  ${rTurbo} : '',
+                                          rColor=${rColor != null}?  ${rColor} : '')} ">
+                      Year
+                  </a>
+              </th>
+              <th>
+                  <a th:href="@{/api/cars(sortField = 'month',
+                                          sortDirection = ${reverseSortDirection},
+                                          rB=${rB != null}?  ${rB} : '',
+                                          rM=${rM != null}?  ${rM} : '',
+                                          rY=${rY != null}?  ${rY} : '',
+                                          rTurbo=${rTurbo != null}?  ${rTurbo} : '',
+                                          rColor=${rColor != null}?  ${rColor} : '')} ">
+                      Month
+                  </a>
+              </th>
+              <th>
+                  <a th:href="@{/api/cars(sortField = 'engineDisplacement',
+                                          sortDirection = ${reverseSortDirection},
+                                          rB=${rB != null}?  ${rB} : '',
+                                          rM=${rM != null}?  ${rM} : '',
+                                          rY=${rY != null}?  ${rY} : '',
+                                          rTurbo=${rTurbo != null}?  ${rTurbo} : '',
+                                          rColor=${rColor != null}?  ${rColor} : '')} ">
+                      Engine<br>Displacement
+                  </a>
+              </th>
+              <th>
+                  <a th:href="@{/api/cars(sortField = 'turbo',
+                                          sortDirection = ${reverseSortDirection},
+                                          rB=${rB != null}?  ${rB} : '',
+                                          rM=${rM != null}?  ${rM} : '',
+                                          rY=${rY != null}?  ${rY} : '',
+                                          rTurbo=${rTurbo != null}?  ${rTurbo} : '',
+                                          rColor=${rColor != null}?  ${rColor} : '')} ">
+                      Turbo
+                  </a>
+              </th>
+              <th>
+                  <a th:href="@{/api/cars(sortField = 'power',
+                                          sortDirection = ${reverseSortDirection},
+                                          rB=${rB != null}?  ${rB} : '',
+                                          rM=${rM != null}?  ${rM} : '',
+                                          rY=${rY != null}?  ${rY} : '',
+                                          rTurbo=${rTurbo != null}?  ${rTurbo} : '',
+                                          rColor=${rColor != null}?  ${rColor} : '')} ">
+                      Power
+                  </a>
+              </th>
+              <th>
+                  <a th:href="@{/api/cars(sortField = 'transmissionType',
+                                          sortDirection = ${reverseSortDirection},
+                                          rB=${rB != null}?  ${rB} : '',
+                                          rM=${rM != null}?  ${rM} : '',
+                                          rY=${rY != null}?  ${rY} : '',
+                                          rTurbo=${rTurbo != null}?  ${rTurbo} : '',
+                                          rColor=${rColor != null}?  ${rColor} : '')} ">
+                      Transmission
+                  </a>
+              </th>
+              <th>
+                  <a th:href="@{/api/cars(sortField = 'driveType',
+                                          sortDirection = ${reverseSortDirection},
+                                          rB=${rB != null}?  ${rB} : '',
+                                          rM=${rM != null}?  ${rM} : '',
+                                          rY=${rY != null}?  ${rY} : '',
+                                          rTurbo=${rTurbo != null}?  ${rTurbo} : '',
+                                          rColor=${rColor != null}?  ${rColor} : '')} ">
+                      Drive
+                  </a>
+              </th>
+              <th>
+                  <a th:href="@{/api/cars(sortField = 'bodyType',
+                                          sortDirection = ${reverseSortDirection},
+                                          rB=${rB != null}?  ${rB} : '',
+                                          rM=${rM != null}?  ${rM} : '',
+                                          rY=${rY != null}?  ${rY} : '',
+                                          rTurbo=${rTurbo != null}?  ${rTurbo} : '',
+                                          rColor=${rColor != null}?  ${rColor} : '')} ">
+                      Body Type
+                  </a>
+              </th>
+              <th>
+                  <a th:href="@{/api/cars(sortField = 'color',
+                                          sortDirection = ${reverseSortDirection},
+                                          rB=${rB != null}?  ${rB} : '',
+                                          rM=${rM != null}?  ${rM} : '',
+                                          rY=${rY != null}?  ${rY} : '',
+                                          rTurbo=${rTurbo != null}?  ${rTurbo} : '',
+                                          rColor=${rColor != null}?  ${rColor} : '')} ">
+                      Color
+                  </a>
+              </th>
+              <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+           <tr th:each="tempCar:${cars}">
+              <td th:text="${tempCar.brand}"/>
+              <td th:text="${tempCar.model}"/>
+              <td th:text="${tempCar.year}"/>
+              <td th:text="${tempCar.month}"/>
+              <td th:text="${tempCar.engineDisplacement}"/>
+              <td>
+                  <div th:switch="${tempCar.turbo}">
+                      <span th:case="${false}">No</span>
+                      <span th:case="${true}">Yes</span>
+                  </div>
+              </td>
+              <td th:text="${tempCar.power}"/>
+              <td th:text="${tempCar.transmissionType}"/>
+              <td th:text="${tempCar.driveType}"/>
+              <td th:text="${tempCar.bodyType}"/>
+              <td th:text="${tempCar.color}"/>
+              <td>
+                  <a th:href="@{/api/cars/update(carId=${tempCar.id})}" class="btn btn-info btn-sm">
+                    Update
+                  </a>
+                  <a th:href="@{/api/cars/delete(carId=${tempCar.id})}" class="btn btn-danger btn-sm"
+                   onclick="if(!(confirm('Are you sure you want to delete this car?'))) return false">
+                    Delete
+                  </a>
+              </td>
+           </tr>
+        </tbody>
+    </table>
+    <hr>
+    <a th:href="@{/api/cars/new}" class="btn btn-primary btn-sm mb-3">
+        Add new car
+    </a>
+    <a th:href="@{/api/cars/export/excel(sortField = ${sortField},
+                                          sortDirection = ${sortDirection},
+                                          rB=${rB != null}?  ${rB} : '',
+                                          rM=${rM != null}?  ${rM} : '',
+                                          rY=${rY != null}?  ${rY} : '',
+                                          rTurbo=${rTurbo != null}?  ${rTurbo} : '',
+                                          rColor=${rColor != null}?  ${rColor} : '')}" class="btn btn-primary btn-sm mb-3">
+        Export to Excel
+    </a>
+</div>
+</body>
+</html>
